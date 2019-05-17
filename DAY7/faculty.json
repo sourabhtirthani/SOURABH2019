@@ -1,0 +1,68 @@
+"""
+
+Code Challenge
+  Name: 
+    Student and Faculty JSON
+  Filename: 
+    student.json
+    faculty.json
+  Problem Statement:
+    Create a student and Faculty JSON object and get it verified using jsonlint.com
+    Write a JSON for faculty profile. 
+    The JSON should have profile of minimum 2 faculty members. 
+    The profile for each faculty should include below information atleast:
+
+        First Name
+        Last Name
+        Photo (Just a random url)
+        Department 
+        Research Areas (can be multiple)
+        Contact Details (should include phone number and email id and can have multiple )
+   Hint:
+       www.jsonlint.com
+       
+"""
+
+
+json_teacher="""{
+        "Name" : {
+                  "First Name" : "Rajesh ",
+                  "Last Name" : "Rajan"
+                },
+        "Photo" : "https://www.google.com/search?q=pubg+wallpaper+1920x1080&rlz=1C1CHBF_enIN815IN815&oq=p&aqs=chrome.0.69i59j69i60j0j69i60l2j69i59.1998j0j1&sourceid=chrome&ie=UTF-8",
+        "Department" : "Computer Science",
+        "Research Areas" : [" DAA ","AOS"],
+        "Contact Details" : {
+                               "Phone number" : 80588979778,
+                               "Email id " : "Rajesh@gmail.com"
+                                }
+        
+ }"""
+        
+
+json_teacher1="""{
+        "Name" : {
+                  "First Name" : "Ankit ",
+                  "Last Name" : "Rajan"
+                },
+        "Photo" : "https://www.google.com/search?q=pubg+wallpaper+1920x1080&rlz=1C1CHBF_enIN815IN815&oq=p&aqs=chrome.0.69i59j69i60j0j69i60l2j69i59.1998j0j1&sourceid=chrome&ie=UTF-8",
+        "Department" : "Computer Science",
+        "Research Areas" : [" DAA ","ADS"],
+        "Contact Details" : {
+                               "Phone number" : 80488979778,
+                               "Email id " : "Ankit@gmail.com"
+                                }
+        
+ }"""
+        
+jason_student = """{
+                      "Name" : {
+                  "First Name" : "Sourbh ",
+                  "Last Name" : "Tirthani"
+                },
+                      "Branch" : "Computer science",
+                      "Year" : "3 year",
+                      "Sem" : "6 sem",
+                      "ID" : "16EGCCS041"
+                    }   """     
+
