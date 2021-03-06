@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container">
+  
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myloginModal" id="loginbutton">
+Login
+</button>
+
+<!-- The Modal -->
+<div class="modal" id="myloginModal">
+    
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Login Form</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div id="msg"></div>
+       <form id="loginformId">
+    <div class="form-group">
+     <label for="email">Email:</label>
+      <input type="email" class="form-control" id="loginemail" placeholder="Enter email" name="loginemail">
+    </div>
+    
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="loginpwd" placeholder="Enter password" name="loginpswd">
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myforgetModal" id="forgetpasswordbutton">
+Forget Password?
+</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form> 
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="loginclos">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal" id="myforgetModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Forget Password</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div id="msg2"></div>
+       <form id="forgetpasswordgetotpformId">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="forgetemail" placeholder="Enter email" name="forgetemail">
+    </div>
+    
+    <div class="form-group">
+      <label for="pwd">Username:</label>
+      <input type="text" class="form-control" id="forgetusername" placeholder="Enter username" name="forgetusername">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form> 
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myforgetverifyModal" id="passwordverifybutton" style="display:none">
+verify password
+</button>
+<div class="modal" id="myforgetverifyModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Forget Password</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div id="msg3"></div>
+       <form id="forgetpasswordverifyotpformId">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="verifyemail" placeholder="Enter email" name="forgetemail">
+    </div>
+      <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="verifypwd" placeholder="Enter password" name="verifypwd">
+    </div>
+     <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="verifycpwd" placeholder="Enter Re Password" name="verifycpwd">
+    </div>
+      <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="verifyotp" placeholder="Enter otp" name="verifyotp">
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form> 
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src = "script/script.js"></script>
+</body>
+</html>

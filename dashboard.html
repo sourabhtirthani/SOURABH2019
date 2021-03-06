@@ -1,0 +1,261 @@
+<html lang="en">
+   <head>
+      <title>ss</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+      <link href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.bootstrap4.min.css" rel="stylesheet">
+      <script>
+         if(sessionStorage.getItem('accessToken') == ''||  sessionStorage.getItem('accessToken') == null || sessionStorage.getItem('accessToken') == undefined){
+            
+             alert("Not authorized to access this page");
+             window.location.href= 'http://techyroots.com/MongodbAuththenticationAPI';
+         }
+         
+      </script>
+      <style type="text/css">
+         .input-form input[type="text"] {
+         width: 80%;
+         float: left;
+         padding: 5px 10px;
+         font-size: 17px;
+         margin-right: 10px;
+         }
+         .input-form button {
+         float: right;
+         padding: 5px 10px;
+         font-size: 17px;
+         }
+         .input-form {
+         width: 60%;
+         margin: auto;
+         }
+         table td p{
+         width: 180px;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         }
+      </style>
+   </head>
+   <body>
+      <section>
+         <div class="container">
+            <h1>Tabs</h1>
+            <hr>
+            <div class="row">
+               <div class="col-md-2 mb-3">
+                  <ul class="nav nav-pills flex-column" id="myTab" rol="tablist">
+                     <li class="nav-item">
+                        <a class="nav-link active" id="normal-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Current transition</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" id="token-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Token address</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" id="transition-tab" data-toggle="tab" href="#transition" role="tab" aria-controls="transition" aria-selected="false">Normal address</a>
+                     </li>
+                  </ul>
+               </div>
+              
+               <div class="col-md-10">
+                  <div class="tab-content" id="myTabContent">
+                     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <table id="profile_example" class="table table-striped table-bordered" style="width:100%">
+                           <thead>
+                              <tr>
+                                 <th>S.NO</th>
+                                 <th>Tnx. hash</th>
+                                 <th>blocknumber</th>
+                                 <th>Age</th>
+                                 <th>From</th>
+                                 <th>to</th>
+                                 <th>value</th>
+                              </tr>
+                           </thead>
+                           <tbody id="profile_tab_t_body"></tbody>
+                           
+                        </table>
+                     </div>
+                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <table id="profile_example2" class="table table-striped table-bordered" style="width:100%">
+                           <thead>
+                              <tr>
+                                 <th>S.NO</th>
+                                 <th>Tnx. hash</th>
+                                 <th>blocknumber</th>
+                                 <th>Age</th>
+                                 <th>From</th>
+                                 <th>to</th>
+                                 <th>value</th>
+                              </tr>
+                           </thead>
+                           <tbody id="profile_tab_t_body2"></tbody>
+                           
+                         
+                        </table>
+                     </div>
+                     <div class="tab-pane fade" id="transition" role="tabpanel" aria-labelledby="transition-tab">
+                        <div class="input-form">
+                        </div>
+                        <table id="profile_example3" class="table table-striped table-bordered" style="width:100%">
+                           <thead>
+                              <tr>
+                              <tr>
+                                 <th>S.NO</th>
+                                 <th>Tnx. hash</th>
+                                 <th>blocknumber</th>
+                                 <th>Age</th>
+                                 <th>From</th>
+                                 <th>to</th>
+                                 <th>value</th>
+                              </tr>
+                           </thead>
+                           <tbody id="profile_tab_t_body3">
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+                <div><button id="logout" onclick="logoutdash();">Logout</button></div>
+            </div>
+         </div>
+      </section>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+      
+       <script src="script/script.js"></script>
+       
+       <script>
+           
+      
+       </script>
+       
+        <script>
+        
+         $(document).ready(function()
+        {
+            //===========FOR FETCH DATA FROM DATABASE===========================
+             $.ajax({
+                 type: "GET",
+                 contentType: "application/json",
+                 headers: {
+                     "Authorization": "Bearer " +sessionStorage.getItem('accessToken')
+                 },
+                 url:`http://techyroots.com:3000/fetch_data`,        
+                 dataType: 'json',
+                 success: function(response) 
+                {
+                    console.log("reponse",response);
+                     $('#profile_tab_t_body').html('');
+                     $('#profile_tab_t_body2').html('');
+                     $('#profile_tab_t_body3').html('')
+                     
+                    //================CURRENT TRANSACTIONS======================
+                     let count_num = 0;
+                     let details = response.data.trans;
+                     console.log("CURRENT TRANSACTIONS")
+                     details.forEach(element=>{
+                         count_num++;
+                         //console.log(element.timestamp);
+                         time = new Date(element.timestamp*1000).toTimeString();
+                         new_time=time.slice(0,8)
+                         
+                        
+                     let value1= (element.value)/1000000000000000000
+                         $('#profile_tab_t_body').append(`<tr><td>${count_num}</td><td><p>${element.hash}</p></td><td>${element.blocknumber}</td><td>${new_time}</td><td><p>${element.from}</p></td><td><p>${element.to}</p></td><td>${value1} Ether</td></tr>`)
+                     }) 
+                     let table= $('#profile_example').DataTable();
+                     
+                     //===================TOKEN ADDRESSS========================
+                     
+                     let data = response.data.token;
+                     console.log("TOKEN ADDRESSS")
+                     data.forEach(element1=>{
+                         count_num++;
+                     time2 = new Date(element1.timestamp*1000).toTimeString();
+                         new_time2=time2.slice(0,8)
+                         
+                      value2= (element1.value)/1000000000000000000
+                        $('#profile_tab_t_body2').append(`<tr><td>${count_num}</td><td><p>${element1.hash}</p></td><td>${element1.blocknumber}</td><td>${new_time2}</td><td><p>${element1.from}</p></td><td><p>${element1.to}</p></td><td>${value2} Ether</td></tr>`)
+                     }) 
+                     let table1= $('#profile_example2').DataTable();
+                     
+                    //======================NORMAL ADDRESS======================
+                     
+                     let normal = response.data.normal;
+                     console.log("NORMAL ADDRESS")
+                     normal.forEach(element2=>{
+                         count_num++;
+                         time3 = new Date(element2.timestamp*1000).toTimeString();
+                         new_time3=time3.slice(0,8)
+                         
+                      value3= (element2.value)/1000000000000000000
+                     $('#profile_tab_t_body3').append(`<tr><td>${count_num}</td><td><p>${element2.hash}</p></td><td>${element2.blocknumber}</td><td>${new_time3}</td><td><p>${element2.from}</p></td><td><p>${element2.to}</p></td><td>${value3} Ether</td></tr>`)
+                     }) 
+                    let table2= $('#profile_example3').DataTable();
+                     
+                }
+                 
+            });
+        //     //==========FOR FETCH DATA FROM ETHERSCAN========================== 
+        //      $.ajax({ 
+        //         type: "GET",
+        //          dataType: "json",
+        //           headers: {
+        //              "Authorization": "Bearer " +sessionStorage.getItem('accessToken')
+        //          },
+        //             url: "http://techyroots.com:3000/transfunction",
+        //         success: function(data){        
+        //                     alert(data);
+        //                     }
+        //         });
+             
+         });
+        
+
+     </script>
+     
+     
+    
+      <script>
+         function logoutdash(){
+          
+            let url = 'logout';
+            let method = "POST";
+            let form ="";
+            let data = api_send(url,method,form);
+            $.ajax(data).done(function(response){
+                // alert(response.success)
+                if(response.success == true){
+                    sessionStorage.removeItem('accessToken');
+                    window.location.href= 'http://techyroots.com/MongodbAuththenticationAPI';
+                    swal(response.msg);
+                }
+                else{
+                    swal(response.msg);
+                }
+            });
+         }; 
+         function api_send(url,method,form){
+            var settings = {
+                "url": "http://techyroots.com:3000/"+ url,
+                "method": method,
+                "timeout": 0,
+                "headers": {
+                        "Authorization": "Bearer " +sessionStorage.getItem('accessToken')
+                },
+                "data": form,
+                "dataType" : 'json',
+          };
+          return settings;
+         }
+      </script>
+   </body>
+</html>
